@@ -1,4 +1,4 @@
-package poran.cse.github_top_rated_repo
+package poran.cse.github_top_rated_repo.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import poran.cse.github_top_rated_repo.R
 import poran.cse.github_top_rated_repo.databinding.ActivityMainBinding
 
 class AppMainActivity : AppCompatActivity() {

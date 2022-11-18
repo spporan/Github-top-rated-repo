@@ -1,4 +1,4 @@
-package poran.cse.github_top_rated_repo
+package poran.cse.github_top_rated_repo.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment
 import poran.cse.github_top_rated_repo.databinding.RepositoryDetailsFragmentBinding
 
 
-class RepositoryDetailsFragment : Fragment() {
+class RepoListFragment : Fragment() {
 
     private var _binding: RepositoryDetailsFragmentBinding? = null
-
 
     private val binding get() = _binding!!
 
@@ -27,7 +26,6 @@ class RepositoryDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
     }
 
