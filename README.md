@@ -7,3 +7,5 @@
 3. Show loading progress in network call.
 4. Repository sorting capabilities such as by top rated, by repo creation and  others.
 5. Show Repository Details
+
+## README will update soon
