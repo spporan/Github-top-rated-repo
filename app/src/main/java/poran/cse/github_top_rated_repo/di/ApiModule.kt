@@ -5,7 +5,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-import poran.cse.github_top_rated_repo.BuildConfig
 import poran.cse.github_top_rated_repo.BuildConfig.BASE_URL
 import poran.cse.github_top_rated_repo.data.source.remote.api.GithubApiService
 import retrofit2.Retrofit

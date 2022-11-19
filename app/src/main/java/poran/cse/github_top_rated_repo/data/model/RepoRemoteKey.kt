@@ -14,5 +14,4 @@ data class RepoRemoteKey(
     val id: Long,
     val prevPage: Int?,
     val nextPage: Int?,
-    val lastUpdated: Long?,
 )
