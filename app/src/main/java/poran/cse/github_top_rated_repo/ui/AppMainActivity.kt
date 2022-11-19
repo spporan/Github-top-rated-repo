@@ -5,9 +5,11 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
+import dagger.hilt.android.AndroidEntryPoint
 import poran.cse.github_top_rated_repo.R
 import poran.cse.github_top_rated_repo.databinding.ActivityMainBinding
-
+import poran.cse.github_top_rated_repo.ui.fragments.RepoListFragment
+@AndroidEntryPoint
 class AppMainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -19,7 +21,12 @@ class AppMainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolbar)
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.container, RepoListFragment.newInstance(), RepoListFragment.TAG)
+            .addToBackStack(RepoListFragment.TAG)
+            .commit()
 
     }
 
