@@ -1,10 +1,12 @@
 package poran.cse.github_top_rated_repo.data.source.local.database.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import poran.cse.github_top_rated_repo.data.model.RepoRemoteKey
 
+@Dao
 interface RepoRemoteKeyDao {
     @Query("SELECT * FROM repo_remote_keys WHERE id = :id")
     suspend fun getRepoRemoteKey(id: Long): RepoRemoteKey?

@@ -22,8 +22,8 @@ data class AndroidRepo(
     @SerializedName("description")
     val description: String?,
     @SerializedName("html_url")
-    val url: String,
-    @SerializedName("html_url")
+    val htmlUrl: String,
+    @SerializedName("owner")
     val owner: RepoOwner,
     @SerializedName("stargazers_count")
     val stars: Int,
