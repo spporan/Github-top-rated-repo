@@ -18,6 +18,7 @@ import poran.cse.github_top_rated_repo.ui.adapter.RepoPagingAdapter
 import poran.cse.github_top_rated_repo.ui.adapter.listeners.RepoClickListener
 import poran.cse.github_top_rated_repo.ui.uistates.RepoUiModel
 import poran.cse.github_top_rated_repo.ui.viewmodels.RepoListViewModel
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RepoListFragment : Fragment(),  RepoClickListener {
@@ -27,7 +28,10 @@ class RepoListFragment : Fragment(),  RepoClickListener {
     private val binding get() = _binding!!
 
     private val viewModel: RepoListViewModel by viewModels()
-    private lateinit var repoAdapter: RepoPagingAdapter
+
+    @Inject
+    lateinit var repoAdapter: RepoPagingAdapter
+
     companion object {
         const val TAG  = "RepoListFragment"
 
@@ -61,8 +65,8 @@ class RepoListFragment : Fragment(),  RepoClickListener {
     }
 
     private fun initView() {
-        repoAdapter = RepoPagingAdapter(this)
-
+       // repoAdapter = RepoPagingAdapter(this)
+        repoAdapter.onRepoItemClickListener = this
         binding.repoList.apply {
             layoutManager =  LinearLayoutManager(context)
             adapter  = repoAdapter

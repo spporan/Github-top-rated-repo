@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import poran.cse.github_top_rated_repo.databinding.RepositoryDetailsFragmentBinding
+import poran.cse.github_top_rated_repo.databinding.RepoDetailsFragmentBinding
 
 
 class RepositoryDetailsFragment : Fragment() {
 
-    private var _binding: RepositoryDetailsFragmentBinding? = null
+    private var _binding: RepoDetailsFragmentBinding? = null
 
 
     private val binding get() = _binding!!
@@ -20,7 +20,7 @@ class RepositoryDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = RepositoryDetailsFragmentBinding.inflate(inflater, container, false)
+        _binding = RepoDetailsFragmentBinding.inflate(inflater, container, false)
         return binding.root
 
     }
