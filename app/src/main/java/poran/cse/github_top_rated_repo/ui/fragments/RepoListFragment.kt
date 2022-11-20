@@ -4,17 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import poran.cse.github_top_rated_repo.R
 import poran.cse.github_top_rated_repo.databinding.RepositoryListFragmentBinding
+import poran.cse.github_top_rated_repo.ui.adapter.RepoLoaderStateAdapter
 import poran.cse.github_top_rated_repo.ui.adapter.RepoPagingAdapter
 import poran.cse.github_top_rated_repo.ui.adapter.listeners.RepoClickListener
 import poran.cse.github_top_rated_repo.ui.uistates.RepoUiModel
@@ -33,6 +36,9 @@ class RepoListFragment : Fragment(),  RepoClickListener {
 
     @Inject
     lateinit var repoAdapter: RepoPagingAdapter
+
+    @Inject
+    lateinit var repoLoaderStateAdapter: RepoLoaderStateAdapter
 
     companion object {
         const val TAG  = "RepoListFragment"
@@ -66,12 +72,19 @@ class RepoListFragment : Fragment(),  RepoClickListener {
         }
     }
 
+    /**
+     * Initialize view here
+     */
     private fun initView() {
-       // repoAdapter = RepoPagingAdapter(this)
+
+        repoLoaderStateAdapter.onRetry = {
+            repoAdapter.retry()
+        }
+
         repoAdapter.onRepoItemClickListener = this
         binding.repoList.apply {
             layoutManager =  LinearLayoutManager(context)
-            adapter  = repoAdapter
+            adapter  = repoAdapter.withLoadStateFooter(repoLoaderStateAdapter)
             addItemDecoration(ItemDecoration(
                     firstItemTopMargin = resources.getDimensionPixelOffset(R.dimen.common_margin
                     ),
@@ -79,8 +92,33 @@ class RepoListFragment : Fragment(),  RepoClickListener {
             ))
         }
 
+        //page  state observer
+        repoAdapter.addLoadStateListener { loadState ->
+            val isEmptyData = repoAdapter.itemCount == 0
+            val isError = loadState.refresh is LoadState.Error && isEmptyData
+            val isEmptyDataState = loadState.mediator?.append is LoadState.NotLoading
+                    && isEmptyData
+                    && loadState.mediator?.append?.endOfPaginationReached == true
 
+            if (loadState.refresh is LoadState.Loading && isEmptyData){
+                binding.loader.visibility = View.VISIBLE
+            }
+            else if (isError || isEmptyDataState) {
+                // getting the error and gone loader
+                binding.errorMsg.isVisible = true
+                binding.retryButton.isVisible = true
 
+                binding.loader.isVisible = false
+            } else {
+                //gone error placeholder here
+                binding.loader.isVisible = isEmptyData
+                binding.errorMsg.isVisible = false
+                binding.retryButton.isVisible = false
+            }
+            binding.retryButton.setOnClickListener {
+                repoAdapter.retry()
+            }
+        }
 
     }
 

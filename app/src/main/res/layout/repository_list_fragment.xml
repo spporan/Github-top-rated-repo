@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.RepositoryDetailsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,4 +14,45 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="5dp"
         tools:listitem="@layout/repo_item_view" />
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/loader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+         />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/error_msg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_margin"
+        android:gravity="center"
+        tools:visibility="visible"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/primary_text_size"
+        android:textColor="?primaryTextColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/something_went_wrong_description"
+       />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/retry_button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/try_again"
+        tools:visibility="visible"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/error_msg" />
 </androidx.constraintlayout.widget.ConstraintLayout>
