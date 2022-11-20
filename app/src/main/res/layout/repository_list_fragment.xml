@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.RepositoryDetailsFragment">
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/repoList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/repoList"
         tools:itemCount="10"
-        tools:listitem="@layout/repo_item_view"
-        />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="5dp"
+        tools:listitem="@layout/repo_item_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

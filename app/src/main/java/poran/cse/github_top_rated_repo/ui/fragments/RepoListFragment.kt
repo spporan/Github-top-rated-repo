@@ -13,11 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import poran.cse.github_top_rated_repo.R
 import poran.cse.github_top_rated_repo.databinding.RepositoryListFragmentBinding
 import poran.cse.github_top_rated_repo.ui.adapter.RepoPagingAdapter
 import poran.cse.github_top_rated_repo.ui.adapter.listeners.RepoClickListener
 import poran.cse.github_top_rated_repo.ui.uistates.RepoUiModel
 import poran.cse.github_top_rated_repo.ui.viewmodels.RepoListViewModel
+import poran.cse.github_top_rated_repo.util.ItemDecoration
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -70,6 +72,11 @@ class RepoListFragment : Fragment(),  RepoClickListener {
         binding.repoList.apply {
             layoutManager =  LinearLayoutManager(context)
             adapter  = repoAdapter
+            addItemDecoration(ItemDecoration(
+                    firstItemTopMargin = resources.getDimensionPixelOffset(R.dimen.common_margin
+                    ),
+                    lastItemBottomMargin = resources.getDimensionPixelOffset(R.dimen.common_margin)
+            ))
         }
 
 

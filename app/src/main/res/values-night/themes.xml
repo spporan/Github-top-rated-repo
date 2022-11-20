@@ -10,7 +10,17 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <item name="backgroundColor">@color/background_night</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimaryDark">@color/teal_700</item> <!-- this is needed for statusBar color -->
+        <item name="android:navigationBarColor" >@color/background_night</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/background_night</item>
+        <item name="appCardBackgroundColor">@color/card_color_dark</item>
+        <item name="primaryTextColor">@color/white</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

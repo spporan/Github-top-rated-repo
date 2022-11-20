@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="APPBackgroundColor" format="reference|color" />
+    <attr name="appCardBackgroundColor" format="reference|color" />
+    <attr name="primaryTextColor" format="reference|color" />
+
+</resources>
