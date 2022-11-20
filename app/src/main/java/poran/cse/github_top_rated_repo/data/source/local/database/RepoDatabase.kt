@@ -12,7 +12,7 @@ import poran.cse.github_top_rated_repo.data.source.local.database.dao.RepoRemote
 @Database(entities = [
     AndroidRepo::class,
     RepoRemoteKey::class
-], version = 1, exportSchema = false)
+], version = 2, exportSchema = false)
 @TypeConverters(TypeConverter::class)
 abstract class RepoDatabase: RoomDatabase() {
 
