@@ -60,6 +60,7 @@ class AndroidRepoRemoteMediator(
         try {
 
             val apiResponse = remoteDateSource.fetchRepos(page = page)
+            Log.d(TAG, "loaded page no $page")
 
             val repoItems = apiResponse.items
             val endOfPaginationReached = repoItems.isEmpty()

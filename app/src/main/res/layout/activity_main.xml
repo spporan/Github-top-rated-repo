@@ -6,14 +6,26 @@
     android:layout_height="match_parent"
     >
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?backgroundColor"
+        app:titleTextColor="?primaryTextColor"
+        app:titleMarginStart="@dimen/common_margin"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/toolbar"
-        app:title="Android Rep"
-        />
+        app:contentInsetStartWithNavigation="0dp"
+        tools:titleTextColor="#0000FF"
+        tools:background="#FFEB3B"
+        tools:subtitleTextColor="#0000FF"
+        tools:title="Android Repo"
+       >
+    </androidx.appcompat.widget.Toolbar>
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="0dp"
@@ -21,5 +33,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+         />
 </androidx.constraintlayout.widget.ConstraintLayout>
