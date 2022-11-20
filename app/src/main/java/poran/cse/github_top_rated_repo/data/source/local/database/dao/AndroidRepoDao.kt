@@ -12,7 +12,7 @@ interface AndroidRepoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRepos(androidRepo: List<AndroidRepo>)
 
-    @Query("SELECT * FROM android_repository")
+    @Query("SELECT * FROM android_repository ORDER BY stars DESC")
     fun getRepos(): PagingSource<Int, AndroidRepo>
 
 
