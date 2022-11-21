@@ -14,7 +14,7 @@
 
 <p align="center">
 ![Semantic description of image](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/screenshots/github_repo_app.gif)
-![ScreenShoot 1](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/screenshots/github_repo_app_shoot2.jpg)
+![ScreenShoot 1](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/screenshots/github_repo_app_shot2.jpg)
 ![ScreenShoot 2](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/screenshots/github_repo_app_shoot1.jpg)
 </p>
 
