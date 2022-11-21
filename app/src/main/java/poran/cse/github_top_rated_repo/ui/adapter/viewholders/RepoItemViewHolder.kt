@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import poran.cse.github_top_rated_repo.R
 import poran.cse.github_top_rated_repo.databinding.RepoItemViewBinding
 import poran.cse.github_top_rated_repo.ui.uistates.RepoUiModel
+import poran.cse.github_top_rated_repo.util.generateDrawable
 import poran.cse.github_top_rated_repo.util.numberFormat
 import kotlin.random.Random
 
@@ -25,7 +26,7 @@ class RepoItemViewHolder(
             title.text = repoUiItem.repo.fullName
             description.text = repoUiItem.repo.description
             langName.text = repoUiItem.repo.language ?: ""
-            langPlaceholder.background = generateDrawable()
+            langPlaceholder.background = itemView.context.generateDrawable()
             if (repoUiItem.repo.language.isNullOrEmpty()) {
                 langName.visibility = View.GONE
                 langPlaceholder.visibility = View.GONE
@@ -35,27 +36,5 @@ class RepoItemViewHolder(
             }
             starCount.text = numberFormat(repoUiItem.repo.stars.toLong())
         }
-    }
-
-    /**
-     * set random color in shape drawable
-     */
-    private fun generateDrawable(): Drawable {
-        val drawable = ContextCompat
-            .getDrawable(itemView.context, R.drawable.round_background)?.mutate() as GradientDrawable
-        drawable.setColor(getLanguageColourCode())
-        return drawable
-    }
-
-    /**
-     * Generate  random color
-     */
-    private fun getLanguageColourCode(): Int {
-        return Color.argb(
-            255,
-            Random.nextInt(256),
-            Random.nextInt(256),
-            Random.nextInt(256)
-        )
     }
 }

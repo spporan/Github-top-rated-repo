@@ -6,9 +6,12 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.paging.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import poran.cse.github_top_rated_repo.data.model.AndroidRepo
 import poran.cse.github_top_rated_repo.data.repository.AndroidGithubRepoRepository
 import poran.cse.github_top_rated_repo.data.source.local.database.RepoDatabase
@@ -22,7 +25,8 @@ import javax.inject.Inject
 class AndroidGithubRepoRepositoryImpl @Inject constructor(
     private val repoDatabase: RepoDatabase,
     private val networkDataSource: AndroidRepoNetworkDataSource,
-    private val repoDataStore: DataStore<Preferences>
+    private val repoDataStore: DataStore<Preferences>,
+    private val dispatcher: CoroutineDispatcher
 ): AndroidGithubRepoRepository {
     companion object {
         const val NETWORK_PAGE_SIZE = 10
@@ -81,6 +85,12 @@ class AndroidGithubRepoRepositoryImpl @Inject constructor(
             sortingOrder = sortOrder
             sortOrder
 
+        }
+    }
+
+    override suspend fun getRepoDetails(repoId: Long): AndroidRepo {
+        return withContext(dispatcher) {
+            repoDatabase.repoDao().getRepoDetails(repoId)
         }
     }
 }

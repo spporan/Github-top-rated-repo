@@ -18,6 +18,8 @@ interface AndroidRepoDao {
     @Query("SELECT * FROM android_repository ORDER BY stars ASC")
     fun getAscendingSortedRepos(): PagingSource<Int, AndroidRepo>
 
+    @Query("SELECT * FROM android_repository WHERE id = :repoId")
+    suspend fun getRepoDetails(repoId: Long): AndroidRepo
 
     @Query("DELETE FROM android_repository")
     suspend fun deleteRepos(): Int

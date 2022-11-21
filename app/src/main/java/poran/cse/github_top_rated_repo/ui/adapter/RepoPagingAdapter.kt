@@ -37,7 +37,12 @@ class RepoPagingAdapter @Inject constructor(): PagingDataAdapter<RepoUiModel, Re
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val uiModel = getItem(position)
         uiModel?.let {
-            (holder as RepoItemViewHolder).onBind(it as RepoUiModel.RepoItem)
+            val uiItem = it as RepoUiModel.RepoItem
+            (holder as RepoItemViewHolder).onBind(uiItem)
+
+            holder.itemView.setOnClickListener {
+                onRepoItemClickListener?.onDetailsView(uiItem)
+            }
         }
 
     }

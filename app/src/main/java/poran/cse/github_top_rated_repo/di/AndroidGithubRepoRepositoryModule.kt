@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 import poran.cse.github_top_rated_repo.data.repository.AndroidGithubRepoRepository
 import poran.cse.github_top_rated_repo.data.repository.repoImpl.AndroidGithubRepoRepositoryImpl
 import poran.cse.github_top_rated_repo.data.source.local.database.RepoDatabase
@@ -18,7 +19,13 @@ object AndroidGithubRepoRepositoryModule {
     fun provideCategoryRepository(
         remoteRepoDataSource: AndroidRepoNetworkDataSource,
         repoDatabase: RepoDatabase,
-        repoDataStore: DataStore<Preferences>
+        repoDataStore: DataStore<Preferences>,
+        dispatcher: CoroutineDispatcher
     ): AndroidGithubRepoRepository =
-        AndroidGithubRepoRepositoryImpl(repoDatabase = repoDatabase, remoteRepoDataSource, repoDataStore)
+        AndroidGithubRepoRepositoryImpl(
+            repoDatabase = repoDatabase,
+            remoteRepoDataSource,
+            repoDataStore,
+            dispatcher
+        )
 }

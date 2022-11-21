@@ -38,7 +38,7 @@ class AndroidRepoRemoteMediator(
         Log.e("EEE", "initialize")
 
         val updatedTime = withContext(Dispatchers.IO) {
-            database.remoteKeyDao().lastUpdated()
+            database.remoteKeyDao().lastUpdated() ?: 0L
         }
 
         return if (System.currentTimeMillis() - updatedTime >= cacheTimeout)

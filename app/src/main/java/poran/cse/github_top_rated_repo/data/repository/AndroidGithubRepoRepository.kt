@@ -11,4 +11,7 @@ interface AndroidGithubRepoRepository {
     suspend fun setCurrentSortingOrder(sorting: Sorting)
 
     fun getCurrentSortingOrder(): Flow<Sorting>
+
+    suspend fun getRepoDetails(repoId: Long): AndroidRepo
+
 }

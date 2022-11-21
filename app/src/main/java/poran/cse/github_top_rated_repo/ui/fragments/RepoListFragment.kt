@@ -142,6 +142,15 @@ class RepoListFragment : Fragment(),  RepoClickListener {
     }
 
     override fun onDetailsView(repoItem: RepoUiModel.RepoItem) {
-        TODO("Not yet implemented")
+        activity?.apply {
+            supportFragmentManager.beginTransaction()
+                .add(
+                    R.id.container,
+                    RepositoryDetailsFragment.newInstance(repoItem.repo.id),
+                    RepositoryDetailsFragment.TAG
+                )
+                .addToBackStack(RepositoryDetailsFragment.TAG)
+                .commit()
+        }
     }
 }

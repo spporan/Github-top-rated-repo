@@ -45,6 +45,4 @@ data class RepoOwner(
     val type: String?,
     @SerializedName("url")
     val url: String?,
-    @SerializedName("updated_at")
-    val updatedAt: String?
 )

@@ -18,5 +18,5 @@ interface RepoRemoteKeyDao {
     suspend fun deleteRepoRemoteKeys(): Int
 
     @Query("SELECT lastUpdateTime FROM repo_remote_keys ORDER BY lastUpdateTime DESC LIMIT 1")
-    suspend fun lastUpdated(): Long
+    suspend fun lastUpdated(): Long?
 }

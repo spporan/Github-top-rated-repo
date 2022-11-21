@@ -29,6 +29,14 @@ data class AndroidRepo(
     val stars: Int,
     @SerializedName("forks_count")
     val forks: Int,
+    @SerializedName("open_issues_count")
+    val issues: Int,
+    @SerializedName("watchers")
+    val watchers: Int,
+    @SerializedName("default_branch")
+    val branch: String,
     @SerializedName("language")
-    val language: String?
+    val language: String?,
+    @SerializedName("updated_at")
+    val updatedAt: String?
 )
