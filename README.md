@@ -8,7 +8,8 @@ This sample app that implements MVVM architecture using hilt, Room, Paging3, Ret
 4. App supported to offline mode.
 5. Show loading progress in network call and handle network related error.
 6. Repository sorting capabilities such as by top rated, by repo creation and others.
-7. Show Repository Details
+7. Add product flavor like dev, qa, prod
+8. Show Repository Details
 
 #### The app has following packages:
 1. **data**: It contains all the data accessing and manipulating components.
