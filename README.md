@@ -14,9 +14,8 @@
 
 <p align="center">
 ![Semantic description of image](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/screenshots/github_repo_app.gif)
-<img src="https://gitlab.com/poran.cse/Github_top_rated_repo/-/blob/main/screenshots/github_repo_app_shoot2.jpg" alt="drawing" width="230px"/>
-<img src="https://gitlab.com/poran.cse/Github_top_rated_repo/-/blob/main/screenshots/github_repo_app_shoot1.jpg" alt="drawing" width="230px"/> 
-<img src="https://gitlab.com/poran.cse/Github_top_rated_repo/-/blob/main/screenshots/github_repo_app.gif" alt="drawing" width="230px" hspace="30"/>  
+![ScreenShoot 1](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/screenshots/github_repo_app_shoot2.jpg)
+![ScreenShoot 2](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/screenshots/github_repo_app_shoot1.jpg)
 </p>
 
 # APK Download
