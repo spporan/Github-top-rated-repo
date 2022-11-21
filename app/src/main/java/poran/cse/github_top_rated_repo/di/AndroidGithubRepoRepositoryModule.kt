@@ -1,5 +1,7 @@
 package poran.cse.github_top_rated_repo.di
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +17,8 @@ object AndroidGithubRepoRepositoryModule {
     @Provides
     fun provideCategoryRepository(
         remoteRepoDataSource: AndroidRepoNetworkDataSource,
-        repoDatabase: RepoDatabase
+        repoDatabase: RepoDatabase,
+        repoDataStore: DataStore<Preferences>
     ): AndroidGithubRepoRepository =
-        AndroidGithubRepoRepositoryImpl(repoDatabase = repoDatabase, remoteRepoDataSource)
+        AndroidGithubRepoRepositoryImpl(repoDatabase = repoDatabase, remoteRepoDataSource, repoDataStore)
 }

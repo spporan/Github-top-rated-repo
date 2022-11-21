@@ -1,12 +1,13 @@
 package poran.cse.github_top_rated_repo.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -32,7 +33,7 @@ class RepoListFragment : Fragment(),  RepoClickListener {
 
     private val binding get() = _binding!!
 
-    private val viewModel: RepoListViewModel by viewModels()
+    private val viewModel: RepoListViewModel by activityViewModels()
 
     @Inject
     lateinit var repoAdapter: RepoPagingAdapter
@@ -63,10 +64,22 @@ class RepoListFragment : Fragment(),  RepoClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.loadRepo().collectLatest { pageData ->
                     repoAdapter.submitData(pageData)
+                }
+            }
+
+        }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.getSortingOrder().collectLatest {
+                    Log.e("ERR", "collect sort order $it")
+                    //viewModel.loadRepo(it)
+                    repoAdapter.refresh()
                 }
             }
         }
@@ -94,6 +107,7 @@ class RepoListFragment : Fragment(),  RepoClickListener {
 
         //page  state observer
         repoAdapter.addLoadStateListener { loadState ->
+
             val isEmptyData = repoAdapter.itemCount == 0
             val isError = loadState.refresh is LoadState.Error && isEmptyData
             val isEmptyDataState = loadState.mediator?.append is LoadState.NotLoading

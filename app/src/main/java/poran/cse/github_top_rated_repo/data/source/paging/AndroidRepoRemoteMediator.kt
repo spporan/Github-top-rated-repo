@@ -35,6 +35,7 @@ class AndroidRepoRemoteMediator(
 
     override suspend fun initialize(): InitializeAction {
         val cacheTimeout = TimeUnit.MILLISECONDS.convert(TIME_OUT_INTERVAL, TimeUnit.MINUTES)
+        Log.e("EEE", "initialize")
 
         val updatedTime = withContext(Dispatchers.IO) {
             database.remoteKeyDao().lastUpdated()
