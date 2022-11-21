@@ -2,11 +2,13 @@
 This sample app that implements MVVM architecture using hilt, Room, Paging3, Retrofit, Datastore.
 
 # App's Features
-1. List of top rated android repo.
-2. App supported to offline mode.
-3. Show loading progress in network call and handle network related error.
-4. Repository sorting capabilities such as by top rated, by repo creation and  others.
-5. Show Repository Details
+1. Fetching list of top rated android repo and stored in a local database.
+2. Fetching the repository list  supported pagination by scrolling. Each time by scrolling, fetch 10 new items.
+3. The  data will refresh from the API every 30 minutes time interval.
+4. App supported to offline mode.
+5. Show loading progress in network call and handle network related error.
+6. Repository sorting capabilities such as by top rated, by repo creation and others.
+7. Show Repository Details
 
 #### The app has following packages:
 1. **data**: It contains all the data accessing and manipulating components.
