@@ -19,4 +19,4 @@
 </p>
 
 # APK Download
-[Download APK](https://github.com/spporan/walcartAssignment/blob/master/apk/app-debug.apk)
+[Download APK](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/apk/app-dev-debug.apk)
