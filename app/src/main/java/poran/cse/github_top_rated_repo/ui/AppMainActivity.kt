@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -21,6 +22,7 @@ import poran.cse.github_top_rated_repo.R
 import poran.cse.github_top_rated_repo.data.util.Sorting
 import poran.cse.github_top_rated_repo.databinding.ActivityMainBinding
 import poran.cse.github_top_rated_repo.ui.fragments.RepoListFragment
+import poran.cse.github_top_rated_repo.ui.fragments.RepositoryDetailsFragment
 import poran.cse.github_top_rated_repo.ui.viewmodels.RepoListViewModel
 import poran.cse.github_top_rated_repo.util.OnBackPressedDelegate
 import poran.cse.github_top_rated_repo.util.OnBackPressedDelegateImpl
@@ -29,7 +31,6 @@ import poran.cse.github_top_rated_repo.util.OnBackPressedDelegateImpl
 @AndroidEntryPoint
 class AppMainActivity : AppCompatActivity(), OnBackPressedDelegate by OnBackPressedDelegateImpl() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     private val viewModel: RepoListViewModel by viewModels()
@@ -43,6 +44,7 @@ class AppMainActivity : AppCompatActivity(), OnBackPressedDelegate by OnBackPres
             if (supportFragmentManager.findFragmentById(R.id.container) is RepoListFragment) {
                 finish()
             }
+            supportFragmentManager.popBackStack()
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -59,6 +61,25 @@ class AppMainActivity : AppCompatActivity(), OnBackPressedDelegate by OnBackPres
     }
 
     private fun initView() {
+        supportFragmentManager.addOnBackStackChangedListener {
+            when(supportFragmentManager.findFragmentById(R.id.container)){
+                is RepoListFragment -> {
+                    binding.toolbar.title = getString(R.string.app_name)
+                    binding.sortBtn.isVisible = true
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                }
+                is RepositoryDetailsFragment -> {
+                    binding.toolbar.title = getString(R.string.repo_details)
+                    binding.sortBtn.isVisible = false
+
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    binding.toolbar.setNavigationOnClickListener {
+                        supportFragmentManager.popBackStack()
+                    }
+                }
+            }
+
+        }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getSortingOrder().collectLatest {
@@ -111,16 +132,6 @@ class AppMainActivity : AppCompatActivity(), OnBackPressedDelegate by OnBackPres
         popup?.setForceShowIcon(true)
 
         popup?.show()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.sort_asc -> true
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
 }
