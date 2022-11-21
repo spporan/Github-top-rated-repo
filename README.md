@@ -1,5 +1,5 @@
 # Github-top-rated-repo app
-This sample app that implements MVVM architecture using hilt, Room, Paging3, Retrofit, PlaceHolderView.
+This sample app that implements MVVM architecture using hilt, Room, Paging3, Retrofit, Datastore.
 
 # App's Features
 1. List of top rated android repo.
