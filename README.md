@@ -37,6 +37,11 @@ This sample app that implements MVVM architecture using hilt, Room, Paging3, Ret
 # APK Download
 [Download APK](https://gitlab.com/poran.cse/Github_top_rated_repo/-/raw/main/apk/app-dev-debug.apk)
 
+
+### TODO
+It's not possible to cover all the functionality to Unit test deu to tight deadline. 
+
+
 [mockwebserver]: https://github.com/square/okhttp/tree/master/mockwebserver
 [data-store]: https://developer.android.com/topic/libraries/architecture/datastore?gclid=Cj0KCQiA4OybBhCzARIsAIcfn9mSE2oMBKwkdd6hOmLMmpmPl9LbvmXBxjBfCd1Zl3gcvhlOAOehV80aAt-wEALw_wcB&gclsrc=aw.ds#preferences-datastore-dependencies
 [arch]: https://developer.android.com/arch
